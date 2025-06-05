@@ -25,7 +25,6 @@ class Hello extends Query
     public function args(): array
     {
         return [
-
         ];
     }
 

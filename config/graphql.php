@@ -86,6 +86,8 @@ return [
             'types' => [
                 // ExampleType::class,
                 \App\GraphQL\Types\Geometry::class,
+                \App\GraphQL\Types\GeometryNumericData::class,
+                \App\GraphQL\Types\NumericPoint::class,
                 \App\GraphQL\Scalars\GeoJSON::class,
             ],
 

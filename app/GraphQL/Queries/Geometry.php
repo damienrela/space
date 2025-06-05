@@ -32,7 +32,6 @@ class Geometry extends Query
                 'name' => 'geoJSON',
                 'type' => Type::nonNull(GraphQL::type('GeoJSON'))
             ]
-
         ];
     }
 

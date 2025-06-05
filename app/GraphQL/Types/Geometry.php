@@ -8,8 +8,7 @@ use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 
-use App\GraphQL\Fields\GeoJSON;
-use App\GraphQL\Fields\ExcludingWind150m;
+use App\GraphQL\Fields;
 
 class Geometry extends GraphQLType
 {
@@ -21,8 +20,10 @@ class Geometry extends GraphQLType
     public function fields(): array
     {
         return [
-            'geoJson' => new GeoJSON,
-            'excludingWind150m' => new ExcludingWind150m,
+            'geoJson' => new Fields\GeoJSON,
+            'excludingWind150m' => new Fields\ExcludingWind150m,
+            'excludingWaterways' => new Fields\ExcludingWaterways,
+            'wind150m' => new Fields\Wind150m,
         ];
     }
 }
