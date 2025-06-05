@@ -77,6 +77,7 @@ return [
             'query' => [
                 // ExampleQuery::class,
                 \App\GraphQL\Queries\Hello::class,
+                \App\GraphQL\Queries\Geometry::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -84,6 +85,8 @@ return [
             // The types only available in this schema
             'types' => [
                 // ExampleType::class,
+                \App\GraphQL\Types\Geometry::class,
+                \App\GraphQL\Scalars\GeoJSON::class,
             ],
 
             // Laravel HTTP middleware
