@@ -21,6 +21,7 @@ class Geometry extends GraphQLType
     {
         return [
             'geoJson' => new Fields\GeoJSON,
+            'exampleIntersect' => new Fields\ExcludingExampleLayer,
             'excludingWind150m' => new Fields\ExcludingWind150m,
             'excludingWaterways' => new Fields\ExcludingWaterways,
             'wind150m' => new Fields\Wind150m,

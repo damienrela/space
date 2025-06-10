@@ -42,6 +42,6 @@ class Geometry extends Query
         $select = $fields->getSelect();
         $with = $fields->getRelations();
 
-        return $args;
+        return $args["geoJSON"];
     }
 }

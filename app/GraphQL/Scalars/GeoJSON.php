@@ -11,6 +11,7 @@ use GraphQL\Type\Definition\ScalarType;
 use GraphQL\Type\Definition\Type;
 use GraphQL\Language\AST\StringValueNode;
 use Rebing\GraphQL\Support\Contracts\TypeConvertible;
+use App\Models\GeoJson as GeoObject;
 
 
 class GeoJSON extends ScalarType implements TypeConvertible
@@ -36,7 +37,7 @@ class GeoJSON extends ScalarType implements TypeConvertible
      */
     public function serialize($value)
     {
-        return json_encode($value);
+        return $value->toJson();
     }
 
     /**
@@ -52,7 +53,7 @@ class GeoJSON extends ScalarType implements TypeConvertible
      */
     public function parseValue($value)
     {
-        return json_decode($value);
+        return new GeoObject($value);
     }
 
     /**
@@ -73,12 +74,13 @@ class GeoJSON extends ScalarType implements TypeConvertible
             throw new Error('Query error: Can only parse strings got: ' . $valueNode->kind, [$valueNode]);
         }
 
-        // TODO: Improve validation
-        if (!json_validate($valueNode->value)) {
+        $geoJson = new GeoObject($valueNode->value);
+
+        if (!$geoJson->validate()) {
             throw new Error('Query error: Can only parse valid GeoJSON: ' . $valueNode->kind, [$valueNode]);
         }
 
-        return json_decode($valueNode->value);
+        return $geoJson;
     }
 
     public function toType(): Type
