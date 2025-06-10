@@ -21,6 +21,6 @@ class Points extends Field
 
     public function resolve($root, array $args)
     {
-        return $root;
+        return $root->datalayerReader->values($root->geoJSON);
     }
 }

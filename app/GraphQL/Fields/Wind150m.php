@@ -8,6 +8,8 @@ use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Field;
 
+use App\Models\GeometricValues;
+
 class Wind150m extends Field
 {
     protected $attributes = [
@@ -21,16 +23,9 @@ class Wind150m extends Field
 
     public function resolve($root, array $args)
     {
-        // TODO: fetch data against the wind layer
-        return [
-            [
-                'coordinates' => [1,2],
-                'value' => 3,
-            ],
-            [
-                'coordinates' => [5,6],
-                'value' => 7,
-            ]
-        ];
+        return new GeometricValues(
+            $root, // Geojson
+            app('datalayers.example')
+        );
     }
 }

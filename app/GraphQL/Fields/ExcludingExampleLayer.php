@@ -23,7 +23,7 @@ class ExcludingExampleLayer extends Field
 
     public function resolve($root, array $args)
     {
-        $layer = app(ExampleLayer::class);
+        $layer = app('datalayers.example');
         return $layer->intersect($root);
     }
 }

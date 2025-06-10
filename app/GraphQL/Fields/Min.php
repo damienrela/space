@@ -21,6 +21,6 @@ class Min extends Field
 
     public function resolve($root, array $args)
     {
-        return collect($root)->map(fn ($point) => $point['value'])->min();
+        return $root->datalayerReader->min($root->geoJSON);
     }
 }

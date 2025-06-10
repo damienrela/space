@@ -21,6 +21,6 @@ class Sum extends Field
 
     public function resolve($root, array $args)
     {
-        return collect($root)->map(fn ($point) => $point['value'])->sum();
+        return $root->datalayerReader->sum($root->geoJSON);
     }
 }
